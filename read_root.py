@@ -1,4 +1,6 @@
-# uproot
+''' ############################################################### '''
+''' Read root file and convert into Data frame and then to csv file '''
+''' ############################################################### '''
 import time
 import uproot
 from pprint import pprint
@@ -9,12 +11,14 @@ import numpy as np
 from config import input_rootfile
 
 file_root = uproot.open(input_rootfile)
-
 # pprint(file_root.keys())
 # pprint(file_root.values())
+
+''' option 1: to convert the root file to dataframe and finaly to csv '''
 dfs = []
-tree = file_root["fDBEvtTree"]
-t0 = time.time()
+tree = file_root["fDBEvtTree"] # name of Tree in root file
+
+t0 = time.time() # start time
 for key in tree.keys():
     # print(key, tree[key].array())
     # print(key, len(tree[key].array()))
@@ -24,10 +28,17 @@ for key in tree.keys():
     dfs.append(df)
 
 dataframe = pd.concat(dfs, axis=1)  #ignore_index=False
-t1 = time.time()
+
+t1 = time.time() # stop time
 print(t1-t0)
-print(dataframe)
-t2 = time.time()
+
+print("data frame:", dataframe)
+
+
+
+''' option 2: to convert the root file to dataframe '''
+t2 = time.time() # start time
+
 sdf = []
 for key in tree.keys():
     value = tree[key].array()
@@ -37,18 +48,26 @@ for key in tree.keys():
 sdf = pd.DataFrame(np.array(sdf).T, columns=tree.keys())
 t3 = time.time()
 print(t3-t2)
-print(sdf)
-print(tree.keys())
+print("dataframe:", sdf)
+
+
 # try polars
-t4 = time.time()
+
+t4 = time.time() # start time
+''' option 3: to convert the root file to dataframe '''
+
 ldf = []
 for key in tree.keys():
     value = tree[key].array()
     ldf.append(value)
 ldf = pl.DataFrame(np.array(ldf).T, columns=tree.keys())
-t5 = time.time()
+
+t5 = time.time() # stop time
 print(t5-t4)
-print(ldf)
+print("data frame:", ldf)
+
+
+''' Save the data frame to csv file format'''
 # dataframe.to_csv("amptsm.csv")
 
 
