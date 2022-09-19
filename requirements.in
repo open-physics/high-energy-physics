@@ -2,4 +2,7 @@ awkward
 pandas
 uproot
 polars
-
+sklearn
+numpy
+matplotlib
+tensorflow
