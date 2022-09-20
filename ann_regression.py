@@ -8,7 +8,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
-dataset = pd.read_csv("amptsm.csv")
+from config import inputfile
+dataset = pd.read_csv(inputfile)
+
 X = dataset.iloc[:, :15].values
 y = dataset.iloc[:, -29].values
 
