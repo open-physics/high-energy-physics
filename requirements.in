@@ -13,3 +13,4 @@ xgboost
 seaborn
 pickle-mixin
 fastjet
+black
