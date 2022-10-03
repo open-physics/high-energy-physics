@@ -1,15 +1,10 @@
-# uproot
-import time
-import uproot
-from pprint import pprint
+
 import pandas as pd
-import polars as pl
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle 
 
-
-dataset = pd.read_csv("amptsm.csv")
+dataset = pd.read_csv("input_file")
 X = dataset.iloc[:, :15].values
 y = dataset.iloc[:, -29].values
 
@@ -33,7 +28,6 @@ def train_model(model, xtrain, ytrain, xtest):
     pred = inst.predict(xtest)
     return pred
 
-    
 print("Linear reg: ",train_model(LinearRegression, X_train, y_train, X_test))
 print("DecisionTree reg: ",train_model(DecisionTreeRegressor, X_train, y_train, X_test))
 
