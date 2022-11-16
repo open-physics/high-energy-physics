@@ -11,7 +11,7 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from config import inputfile # csv file
+from config import inputfile
 
 dataset = pd.read_csv(inputfile)
 
