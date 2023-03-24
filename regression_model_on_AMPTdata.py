@@ -13,7 +13,7 @@ from config import inputfile
 
 
 def pred_score(estimator, ps_train_x, ps_test_x, ps_train_y):
-    """ predict dependent variable """
+    """predict dependent variable"""
     estimator.fit(ps_train_x, ps_train_y)
     prediction = estimator.predict(ps_test_x)
     return prediction
@@ -26,7 +26,9 @@ def main():
     X = dataset.iloc[:, :15].values
     y = dataset.iloc[:, -29].values
 
-    train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.8, random_state=40)
+    train_X, test_X, train_y, test_y = train_test_split(
+        X, y, test_size=0.8, random_state=40
+    )
 
     sc_x = StandardScaler()
     # sc_y = StandardScaler()
@@ -61,7 +63,7 @@ def main():
     decision_t.fit(train_X, train_y)
     y_pred_dt = decision_t.predict(test_X)
 
-    #score = cross_val_score(estimator=rf, X=train_X, y=train_y, cv=10)
+    # score = cross_val_score(estimator=rf, X=train_X, y=train_y, cv=10)
 
     breakpoint()
 
