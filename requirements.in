@@ -1,8 +1,10 @@
 scikit-learn
+ipython
 pylint
 pdbpp
 numpy
 pandas
+polars
 matplotlib
 scipy
 nltk
