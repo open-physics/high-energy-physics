@@ -1,6 +1,7 @@
 """ ML regression models to predict the dependent variable """
 
 import pickle
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -9,7 +10,31 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import cross_val_score
-from config import inputfile
+
+# Add project path using sys.
+# import sys; sys.path.insert(0, "..")
+
+# Define project path using os
+project_dir = os.path.realpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+)
+
+
+def load_dataset(data_file):
+    data_folder = "data"
+    inputfile = os.path.join(project_dir, data_folder, data_file)
+    # Following will also work with ''' import sys; sys.path.insert(0, "..")'''
+    # inputfile = "data/amptsm.csv"
+    try:
+        dataset = pd.read_csv(inputfile)
+    except:
+        print(
+            f"Your data file {data_file} does not exist "
+            f"in {project_dir}/{data_folder}.\n"
+            f"Kindly, place your data file correctly."
+        )
+        exit()
+    return dataset
 
 
 def pred_score(estimator, ps_train_x, ps_test_x, ps_train_y):
@@ -21,8 +46,7 @@ def pred_score(estimator, ps_train_x, ps_test_x, ps_train_y):
 
 def main():
     """implement ml models"""
-    dataset = pd.read_csv(inputfile)
-
+    dataset = load_dataset("amptsm.csv")
     X = dataset.iloc[:, :15].values
     y = dataset.iloc[:, -29].values
 
@@ -84,7 +108,9 @@ def main():
     xlim = x_var.min(), x_var.max()
     ylim = y_var.min(), y_var.max()
 
-    fig, (bx0, bx1) = plt.subplots(ncols=1, nrows=2, sharey="all", figsize=(8, 8))
+    fig, (bx0, bx1) = plt.subplots(
+        ncols=1, nrows=2, sharey="all", figsize=(8, 8)
+    )
     # hb1 = bx1.hexbin(x, y, gridsize=50, bins='log', cmap='inferno')
     # bx1.set(xlim=(300,2000),ylim=(250,2000))
     # bx1.set(xlim=xlim,ylim=ylim)
