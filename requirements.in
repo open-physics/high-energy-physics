@@ -12,3 +12,4 @@ tensorflow
 xgboost
 seaborn
 pickle-mixin
+fastjet
