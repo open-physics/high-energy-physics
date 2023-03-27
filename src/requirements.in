@@ -8,7 +8,7 @@ polars
 matplotlib
 scipy
 nltk
-tensorflow
+tensorflow-macos
 xgboost
 seaborn
 pickle-mixin
