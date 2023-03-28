@@ -2,7 +2,8 @@
 
 import pickle
 import os
-from time import time
+
+# from time import time
 import numpy
 import polars as pl
 import matplotlib.pyplot as plt
@@ -11,6 +12,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.decomposition import PCA
 from sklearn.model_selection import cross_val_score
 
 # Add project path using sys.
@@ -60,20 +62,26 @@ def main():
     train_X = sc_x.fit_transform(train_X)
     test_X = sc_x.transform(test_X)
 
+    """apply PCA """
+    principal_comp_analysis = PCA(n_components=6)
+    train_X = principal_comp_analysis.fit_transform(train_X)
+    test_X = principal_comp_analysis.transform(test_X)
+
     model_predictions = {}
     estimators = {
         "linear": LinearRegression(),
-        # "random_forest": RandomForestRegressor(n_estimators=10),
+        # "random_forest": RandomForestRegressor(n_estimators=100),
         "decision_tree": DecisionTreeRegressor(),
     }
 
     linear_model = LinearRegression()
     linear_model.fit(train_X, train_y)
 
-
     for estimator_name, estimator in estimators.items():
         prediction = pred_score(estimator, train_X, test_X, train_y)
-        cv_score = cross_val_score(estimator=estimator, X=train_X, y=train_y, cv=10)
+        cv_score = cross_val_score(
+            estimator=estimator, X=train_X, y=train_y, cv=10
+        )
 
         model_predictions[f"{estimator_name}"] = {
             "prediction": prediction,
@@ -81,19 +89,18 @@ def main():
         }
 
     # save the trained model using pickle
-    with open('linear_model.pkl', 'wb') as file:
+    with open("linear_model.pkl", "wb") as file:
         pickle.dump(linear_model, file)
 
     # load the trained model and predict the values
-    # with open('linear_model.pkl', 'rb') as file:
-        # loaded_model = pickle.load(file)
-    
-    # y_pred = linear_model.predict(test_X)
+    with open("linear_model.pkl", "rb") as file:
+        loaded_model = pickle.load(file)
 
-    breakpoint()
+        y_pred = loaded_model.predict(test_X)
+
     # plotting true vs predicted values
     x_var = test_y
-    y_var = prediction
+    y_var = y_pred
     xlim = x_var.min(), x_var.max()
     ylim = y_var.min(), y_var.max()
 
@@ -112,10 +119,10 @@ def main():
     bx0.set_title("hexa bining")
     cb0 = fig.colorbar(hb1, ax=bx0, label="counts")
     plt.scatter(
-        test_y, y_pred_rf, color="red", alpha=0.4
+        test_y, y_pred, color="red", alpha=0.4
     )  # , linewidth=0.5, edgecolor="white")
     plt.show()
-    # plt.savefig("randomforest_chMult.png")
+    plt.savefig("randomforest_chMult.png")
 
 
 if __name__ == "__main__":
