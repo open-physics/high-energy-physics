@@ -67,10 +67,12 @@ def main():
     train_X = principal_comp_analysis.fit_transform(train_X)
     test_X = principal_comp_analysis.transform(test_X)
 
+    breakpoint()
+
     model_predictions = {}
     estimators = {
         "linear": LinearRegression(),
-        # "random_forest": RandomForestRegressor(n_estimators=100),
+        "random_forest": RandomForestRegressor(n_estimators=100),
         "decision_tree": DecisionTreeRegressor(),
     }
 
@@ -117,7 +119,7 @@ def main():
     # bx0.set(xlim=(500,1500),ylim=(500,1500))
     bx0.set(xlim=xlim, ylim=ylim)
     bx0.set_title("hexa bining")
-    cb0 = fig.colorbar(hb1, ax=bx0, label="counts")
+    # cb0 = fig.colorbar(hb1, ax=bx0, label="counts")
     plt.scatter(
         test_y, y_pred, color="red", alpha=0.4
     )  # , linewidth=0.5, edgecolor="white")
