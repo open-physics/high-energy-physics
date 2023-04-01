@@ -88,6 +88,7 @@ def main():
         model_predictions[f"{estimator_name}"] = {
             "prediction": prediction,
             "avg_cvs": sum(cv_score) / len(cv_score),
+            # "avg_cvs": numpy.mean(cv_score),
         }
 
     # save the trained model using pickle
