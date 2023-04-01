@@ -17,12 +17,14 @@ asttokens==2.2.1
 astunparse==1.6.3
     # via tensorflow-macos
 awkward==2.1.1
-    # via fastjet
+    # via
+    #   fastjet
+    #   uproot
 awkward-cpp==12
     # via awkward
 backcall==0.2.0
     # via ipython
-black==23.1.0
+black==23.3.0
     # via -r requirements.in
 cachetools==5.3.0
     # via google-auth
@@ -50,19 +52,19 @@ fastjet==3.4.0.5
     # via -r requirements.in
 flatbuffers==23.3.3
     # via tensorflow-macos
-fonttools==4.39.2
+fonttools==4.39.3
     # via matplotlib
 gast==0.4.0
     # via tensorflow-macos
-google-auth==2.16.3
+google-auth==2.17.1
     # via
     #   google-auth-oauthlib
     #   tensorboard
-google-auth-oauthlib==0.4.6
+google-auth-oauthlib==1.0.0
     # via tensorboard
 google-pasta==0.2.0
     # via tensorflow-macos
-grpcio==1.51.3
+grpcio==1.53.0
     # via
     #   tensorboard
     #   tensorflow-macos
@@ -70,17 +72,19 @@ h5py==3.8.0
     # via tensorflow-macos
 idna==3.4
     # via requests
-ipython==8.11.0
+ipython==8.12.0
     # via -r requirements.in
 isort==5.12.0
     # via pylint
+jax==0.4.8
+    # via tensorflow-macos
 jedi==0.18.2
     # via ipython
 joblib==1.2.0
     # via
     #   nltk
     #   scikit-learn
-keras==2.11.0
+keras==2.12.0
     # via tensorflow-macos
 kiwisolver==1.4.4
     # via matplotlib
@@ -100,11 +104,13 @@ matplotlib-inline==0.1.6
     # via ipython
 mccabe==0.7.0
     # via pylint
+ml-dtypes==0.0.4
+    # via jax
 mypy-extensions==1.0.0
     # via black
 nltk==3.8.1
     # via -r requirements.in
-numpy==1.24.2
+numpy==1.23.5
     # via
     #   -r requirements.in
     #   awkward
@@ -112,7 +118,9 @@ numpy==1.24.2
     #   contourpy
     #   fastjet
     #   h5py
+    #   jax
     #   matplotlib
+    #   ml-dtypes
     #   opt-einsum
     #   pandas
     #   scikit-learn
@@ -120,18 +128,22 @@ numpy==1.24.2
     #   seaborn
     #   tensorboard
     #   tensorflow-macos
+    #   uproot
     #   vector
     #   xgboost
 oauthlib==3.2.2
     # via requests-oauthlib
 opt-einsum==3.3.0
-    # via tensorflow-macos
+    # via
+    #   jax
+    #   tensorflow-macos
 packaging==23.0
     # via
     #   awkward
     #   black
     #   matplotlib
     #   tensorflow-macos
+    #   uproot
     #   vector
 pandas==1.5.3
     # via
@@ -149,17 +161,17 @@ pickle-mixin==1.0.2
     # via -r requirements.in
 pickleshare==0.7.5
     # via ipython
-pillow==9.4.0
+pillow==9.5.0
     # via matplotlib
 platformdirs==3.2.0
     # via
     #   black
     #   pylint
-polars==0.16.16
+polars==0.16.17
     # via -r requirements.in
 prompt-toolkit==3.0.38
     # via ipython
-protobuf==3.19.6
+protobuf==4.22.1
     # via
     #   tensorboard
     #   tensorflow-macos
@@ -187,7 +199,7 @@ python-dateutil==2.8.2
     # via
     #   matplotlib
     #   pandas
-pytz==2023.2
+pytz==2023.3
     # via pandas
 regex==2023.3.23
     # via nltk
@@ -204,6 +216,7 @@ scikit-learn==1.2.2
 scipy==1.10.1
     # via
     #   -r requirements.in
+    #   jax
     #   scikit-learn
     #   xgboost
 seaborn==0.12.2
@@ -218,17 +231,17 @@ six==1.16.0
     #   tensorflow-macos
 stack-data==0.6.2
     # via ipython
-tensorboard==2.11.2
+tensorboard==2.12.1
     # via tensorflow-macos
-tensorboard-data-server==0.6.1
+tensorboard-data-server==0.7.0
     # via tensorboard
 tensorboard-plugin-wit==1.8.1
     # via tensorboard
-tensorflow-estimator==2.11.0
+tensorflow-estimator==2.12.0
     # via tensorflow-macos
-tensorflow-io-gcs-filesystem==0.31.0
+tensorflow-io-gcs-filesystem==0.32.0
     # via tensorflow-macos
-tensorflow-macos==2.11.0
+tensorflow-macos==2.12.0
     # via -r requirements.in
 termcolor==2.2.0
     # via tensorflow-macos
@@ -252,6 +265,8 @@ typing-extensions==4.5.0
     #   awkward
     #   polars
     #   tensorflow-macos
+uproot==5.0.5
+    # via -r requirements.in
 urllib3==1.26.15
     # via requests
 vector==1.0.0
@@ -266,11 +281,11 @@ wheel==0.40.0
     #   tensorboard
 wmctrl==0.4
     # via pdbpp
-wrapt==1.15.0
+wrapt==1.14.1
     # via
     #   astroid
     #   tensorflow-macos
-xgboost==1.7.4
+xgboost==1.7.5
     # via -r requirements.in
 
 # The following packages are considered to be unsafe in a requirements file:
