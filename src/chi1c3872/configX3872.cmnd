@@ -1,0 +1,29 @@
+Beams:eCM = 13000.
+
+9920443:all = chi_1c chi_1c 3 0 3 3.87169 0.0 3.71066 3.71066 0.0
+9920443:oneChannel = 1 0.3 0 211 -211 443
+9920443:addChannel = 1 0.4 0 421 -421 111
+9920443:addChannel = 2 0.3 0 -423 421
+
+Charmonium:states(3PJ) = 10441,20443,445,9920443
+
+
+#Charmonium:O(3PJ)[3P0(1)] = 0.05,0.05,0.05,0.05
+#Charmonium:O(3PJ)[3S1(8)] = 0.0031,0.0031,0.0031,0.0031
+#Charmonium:gg2ccbar(3PJ)[3PJ(1)]g = on,on,on,on
+#Charmonium:qg2ccbar(3PJ)[3PJ(1)]q = on,on,on,on
+#Charmonium:qqbar2ccbar(3PJ)[3PJ(1)]g = on,on,on,on
+#Charmonium:gg2ccbar(3PJ)[3S1(8)]g = on,on,on,on
+#Charmonium:qg2ccbar(3PJ)[3S1(8)]q = on,on,on,on
+#Charmonium:qqbar2ccbar(3PJ)[3S1(8)]g = on,on,on,on
+
+
+
+Charmonium:O(3PJ)[3P0(1)] = 0.05,0.05,0.05,0.05
+Charmonium:O(3PJ)[3S1(8)] = 0.0031,0.0031,0.0031,0.0031
+Charmonium:gg2ccbar(3PJ)[3PJ(1)]g = off,off,off,on
+Charmonium:qg2ccbar(3PJ)[3PJ(1)]q = off,off,off,on
+Charmonium:qqbar2ccbar(3PJ)[3PJ(1)]g = off,off,off,on
+Charmonium:gg2ccbar(3PJ)[3S1(8)]g = off,off,off,on
+Charmonium:qg2ccbar(3PJ)[3S1(8)]q = off,off,off,on
+Charmonium:qqbar2ccbar(3PJ)[3S1(8)]g = off,off,off,on
